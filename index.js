@@ -4,13 +4,15 @@ const __dirname = url.fileURLToPath(new URL(".", import.meta.url));
 import PromptOrganizer from "ai-prompt-organizer";
 
 // optional config and init, these are the defaults
-// const config = {
-//   source: path.join(__dirname, "prompts"),
-//   debug: true,
-// };
-// PromptOrganizer.init(config);
+const config = {
+  source: path.join(__dirname, "prompts"),
+  debug: true,
+};
+PromptOrganizer.init(config);
 
 async function runExample() {
+  console.log("TEST", PromptOrganizer.get("promptsInOtherPrompts.promptA"));
+  return;
   /* Get and prompt */
   PromptOrganizer.get("helloWorld");
   // "Hello World!"
@@ -48,10 +50,19 @@ async function runExample() {
 
   const inputs = { question: "Why do zebras have stripes?", age: 10 };
   PromptOrganizer.get("fullPrompt", inputs);
-  // "Hello World!
-  // This is a level 1 prompt.
-  // Hello Chat GPT.
-  // 30"
+  // Hi GPT! I have a question.
+  // Why do zebras have stripes?
+  // Write your response in the style of Mr. Rogers
+  // IMPORTANT! Make your response appropriate for someone who is 10 years old.
+  // Age is 10
+  // Pi is 3.14
+
+  PromptOrganizer.get("defaultExportIsPrompt");
+  // This is theoretically a super long prompt (maybe as long as all the decimals in pi (3.14...)
+
+  //  So you may want a whole file dedicated to just this prompt.
+
+  console.log(PromptOrganizer.get("promptsInOtherPrompts.promptA"));
 }
 
 runExample();

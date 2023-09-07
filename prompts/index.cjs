@@ -26,7 +26,8 @@ const objectOfPrompts = {
     {{inputs.question}}
     {{respondInStyle}} {{writingStyles.celebs.misterRogers}}
     {{ageAppropriate}}
-    {{inputs.age}}
+    Age is {{inputs.age}}
+    Pi is {{constants.pi}}
 `,
 };
 
